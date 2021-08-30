@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<div style="margin: auto; text-align: center;">
+<h1>Research Run Statuses</h1>
+<a href="/add">Add Run</a>
+</div>
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Run id</th>
+    <th>Info</th>
+    <th>Date created</th>
+    <th>Run time</th>
+    <th>Continuing Simulation</th>
+    <th>Jet Start</th>
+    <th>Jet End</th>
+    <th>Jet Amplitude</th>
+    <th>Jet Frequency</th>
+    <th>Timestep (dt)</th>
+    <th>Additional Steps</th>
+  </tr>
+  {% for row in rows[::-1] %}
+  <tr>
+    <td>{{ row.config.status }}</td>
+    <td>{{ row.config.id }}</td>
+    <td><a href="/info/{{ row.config.id }}"> Info</a></td>
+    <td>{{ row.config.date_created }}</td>
+    <td>{{ row.runtime }}</td>
+    <td>{{ row.config.continued_run }}</td>
+    <td>{{ row.config.jet_start }}</td>
+    <td>{{ row.config.jet_end }}</td>
+    <td>{{ row.config.jet_amp }}</td>
+    <td>{{ row.config.jet_freq }}</td>
+    <td>{{ row.config.dt }}</td>
+    <td>{{ row.config.additional_steps }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
